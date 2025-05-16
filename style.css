@@ -1,0 +1,26 @@
+html {
+    font-size: 20px;
+}
+
+body {
+    margin: 0;
+}
+
+.header {
+    /* Смотреть https://css-tricks.com/snippets/css/a-guide-to-flexbox/. */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    
+    /* Смотреть https://learn.javascript.ru/css-units#edinitsa-rem-smes-px-i-em. */
+    font-size: 1.2rem;
+}
+
+.result {
+    padding: 12px;
+    background: rgb(180, 219, 248);
+    
+    border-radius: 12px;
+    box-shadow: 0px 6px 20px rgba(0, 16, 61, 0.07);
+}
