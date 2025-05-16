@@ -25198,7 +25198,7 @@ Yo.height = mi;
 let Er = 0, Tr = 0, xo = 0, vo = 0, Mo = 1, Lr = new Ct(100, 1, 0.1, 1e3), gi = new F_({ antialias: !0, canvas: Yo }), kt = new R0(Lr, gi.domElement);
 gi.setSize(mi, mi);
 let $0 = { showGrid: !1, depthZ_Fraction: 0.015, barColor: "gray", barDirection: "Vertical" }, K0 = { toggleRotation: !1, depthZ_Fraction: 0.015, barColor: "gray", barDirection: "Vertical" }, Dr = new Wo({ width: 300 }), ui = Dr.add($0, "showGrid").name("Сетка - вкл/откл").listen(), Z0 = Dr.add(K0, "toggleRotation").name("Вращение - вкл/откл").listen(), J0 = { autoD: !1, depthZ_Fraction: 0.015, barColor: "gray", barDirection: "Vertical" }, Q0 = { gameStart: !1, depthZ_Fraction: 0.015, barColor: "gray", barDirection: "Vertical" };
-const Mh = new oh(), ex = Mh.load("/png/head.png"), qo = Mh.load("/png/skin1.png");
+const Mh = new oh(), ex = Mh.load("png/head.png"), qo = Mh.load("png/skin1.png");
 ui.onChange(function(s) {
   ui = !ui;
 });
@@ -25212,7 +25212,7 @@ Kn.onChange(function(s) {
 di.onChange(function(s) {
   di = !di;
 });
-let ms, tx = await H0.loadAsync("/png/Apple.glb");
+let ms, tx = await H0.loadAsync("png/Apple.glb");
 ms = tx.scene;
 let an = [];
 new A(1, 0, 0);
