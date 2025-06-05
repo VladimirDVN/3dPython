@@ -25181,7 +25181,7 @@ class G0 {
 }
 let W0 = prompt("К-во кубиков по одной оси куба (3,5,7,9,11,15,19,21,31)", 11), jt = Number(W0);
 jt === 0 ? Qt = 11 : jt === 3 || jt === 5 || jt === 7 || jt === 9 || jt === 11 || jt === 15 || jt === 19 || jt === 21 || jt === 31 || jt === 41 ? Qt = jt : location.reload();
-var X0 = new Audio("chewing_apple.wav");
+let X0 = new Audio("chewing_apple.wav");
 const gh = (Qt - 1) / 2, _h = 3, Rc = 100;
 let mi = Math.min(window.innerWidth - Rc, window.innerHeight - Rc), xh = Math.round(mi * 0.5), Ze = Math.round(xh / Qt), ps = Ze * gh, Gn = new A(), Zt = new A(), Le = [], ya = [];
 new A(0, 1, 0);
