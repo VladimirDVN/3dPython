@@ -26141,7 +26141,9 @@ function z0() {
         n.rotation.set(o.x * Math.PI / 2, o.y * Math.PI / 2, o.z * Math.PI / 2);
       }
       ft.add(n);
-      let r = new A(0, -n.geometry.parameters.height / 2, 0).clone().applyMatrix4(n.matrixWorld);
+      const i = new A(0, -n.geometry.parameters.height / 2, 0);
+      n.updateMatrixWorld();
+      let r = i.clone().applyMatrix4(n.matrixWorld);
       e.push(r);
     }
     if (t > 0 && t < Te.length - 1) {
@@ -26149,7 +26151,9 @@ function z0() {
       e.push(r);
     }
     if (t == Te.length - 1) {
-      let r = new A(0, n.geometry.parameters.height / 2, 0).clone().applyMatrix4(n.matrixWorld);
+      const i = new A(0, n.geometry.parameters.height / 2, 0);
+      n.updateMatrixWorld();
+      let r = i.clone().applyMatrix4(n.matrixWorld);
       e.push(r);
       let o = new mh(e), a = new Xa(o, 64, je, 8, !1), l = new pn({ color: 16777215, transparent: !0, map: Or }), c = new At(a, l);
       ft.add(c), ft.add(n);
