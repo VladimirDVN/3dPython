@@ -60015,8 +60015,8 @@ function calRotation(direction) {
 	let newDir;
 	if(direction.z == -1) newDir = new Vector3(-1,0,0);
 	if(direction.z == 1)	newDir = new Vector3(1,0,0);
-	if(direction.y == -1)	newDir = new Vector3(2,0,0);
-	if(direction.y == 1)	newDir = new Vector3(0,0,0);
+	if(direction.y == -1)	newDir = new Vector3(0,-1,0);
+	if(direction.y == 1)	newDir = new Vector3(0,1,0);
 	if(direction.x == -1)	newDir = new Vector3(0,0,1);
 	if(direction.x == 1)	newDir = new Vector3(0,0,-1);
 	if(direction.equals(zeroVector)) newDir = new Vector3(0,0,0);
@@ -60030,10 +60030,11 @@ function drawSnake() {
 		let seg = wormSegments[i];
 		seg.position.set(segments[i].x,segments[i].y,segments[i].z);
 		if(i == 0) {
-			if(zeroVector !== newDir) {
-				seg.rotation.set(0,0,0);
+			if(!(zeroVector.equals(newDir))) {
+//				seg.rotation.set(0,0,0);
 				let rr = calRotation(newDir);
 				seg.rotation.set(rr.x*Math.PI / 2,rr.y*Math.PI / 2,rr.z*Math.PI / 2);
+				newDir = new Vector3(0,0,0);
 			}
 			scene.add(seg);
 //			const bottomLocal = new THREE.Vector3(segments[i].x,segments[i].y,segments[i].z);
