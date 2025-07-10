@@ -59650,12 +59650,19 @@ function createSegmentB(color,rad1,rad2,texture) {
 }
 
         // Create segments
-wormSegments.push(createSegmentB(0xff0000,0.8*cellWidth,cellWidth,texture));
-
+let head = createSegmentB(0xff0000,0.8*cellWidth,cellWidth,texture);
+head.rotation.set(Math.PI/2, Math.PI/2, 0);	
+	
+wormSegments.push(head);
+let body;
 for (let i = 1; i < STARTING_NUM_SEGMENTS-1; i++) {
-    wormSegments.push(createSegmentB(0x00ff00,cellWidth,cellWidth,textureB)); // Green body
-        }
-wormSegments.push(createSegmentB(0x00ff00,cellWidth,0.0*cellWidth,textureB)); // tail
+	body = createSegmentB(0x00ff00,cellWidth,cellWidth,textureB);
+	body.rotation.set(Math.PI/2, 0, 0);	
+    wormSegments.push(body); // Green body
+}
+let tail = createSegmentB(0x00ff00,cellWidth,0.0*cellWidth,textureB);
+tail.rotation.set(Math.PI/2, 0, 0);	
+wormSegments.push(tail); // tail
 wormSegments.forEach(segment => scene.add(segment));		
 
 let directionalLight = new DirectionalLight(0xffffff, 3,854 );
@@ -59700,7 +59707,7 @@ function setUpState() {
 	}    
 	
 	for (let i = 0; i < STARTING_NUM_SEGMENTS; i++) {
-		let tmp2 = new Vector3(0, -i * cellWidth, 0);		//(0, 0, cellWidth -i * cellWidth)
+		let tmp2 = new Vector3(0, 0, cellWidth -i * cellWidth);		//(0, -i * cellWidth, 0)
 		segments.push(tmp2);
     }
 	newHeadPos = segments[0].clone();
@@ -59874,8 +59881,8 @@ function calRotation(direction) {
 	let newDir;
 	if(direction.z == -1) newDir = new Vector3(-1,0,0);
 	if(direction.z == 1)	newDir = new Vector3(1,0,0);
-	if(direction.y == -1)	newDir = new Vector3(2,0,0);
-	if(direction.y == 1)	newDir = new Vector3(0,0,0);
+	if(direction.y == -1)	newDir = new Vector3(0,-1,0);
+	if(direction.y == 1)	newDir = new Vector3(0,1,0);
 	if(direction.x == -1)	newDir = new Vector3(0,0,1);
 	if(direction.x == 1)	newDir = new Vector3(0,0,-1);
 	if(direction.equals(zeroVector)) newDir = new Vector3(0,0,0);
@@ -59889,10 +59896,11 @@ function drawSnake() {
 		let seg = wormSegments[i];
 		seg.position.set(segments[i].x,segments[i].y,segments[i].z);
 		if(i == 0) {
-			if(zeroVector !== newDir) {
-				seg.rotation.set(0,0,0);
+			if(!(zeroVector.equals(newDir))) {
+//				seg.rotation.set(0,0,0);
 				let rr = calRotation(newDir);
 				seg.rotation.set(rr.x*Math.PI / 2,rr.y*Math.PI / 2,rr.z*Math.PI / 2);
+				newDir = new Vector3(0,0,0);
 			}
 			scene.add(seg);
 			const bottomLocal = new Vector3(0, -seg.geometry.parameters.height / 2, 0);
@@ -59909,10 +59917,6 @@ function drawSnake() {
 			const topLocal = new Vector3(segments[i].x,segments[i].y,segments[i].z);
 			let topWorld = topLocal.clone().applyMatrix4(seg.matrixWorld);
 			points.push(topWorld);
-			/* const topLocal2 = new THREE.Vector3(0, -seg.geometry.parameters.height / 2, 0);
-			seg.updateMatrixWorld();
-			let topWorld2 = topLocal2.clone().applyMatrix4(seg.matrixWorld);
-			points.push(topWorld2); */
 			makeTube(points, cellWidth, 0.5);
 		}		
 	}	
