@@ -60089,8 +60089,8 @@ function calRotation(direction) {
 	let newDir;
 	if(direction.z == -1) newDir = new Vector3(-1,0,0);
 	if(direction.z == 1)	newDir = new Vector3(1,0,0);
-	if(direction.y == -1)	newDir = new Vector3(-1,0,0);
-	if(direction.y == 1)	newDir = new Vector3(0,0,0);
+	if(direction.y == -1)	newDir = new Vector3(0,-1,0);
+	if(direction.y == 1)	newDir = new Vector3(0,1,0);
 	if(direction.x == -1)	newDir = new Vector3(0,0,1);
 	if(direction.x == 1)	newDir = new Vector3(0,0,-1);
 	if(direction.equals(zeroVector)) newDir = new Vector3(0,0,0);
